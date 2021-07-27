@@ -18,10 +18,11 @@ class TaskList extends StatelessWidget {
               value: false,
               onChanged: (bool? value) {},
             ),
+            contentPadding: EdgeInsets.zero,
           );
         },
         itemCount: tasks.length,
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        padding: EdgeInsets.symmetric(horizontal: 45, vertical: 32),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todoey_flutter/widgets/add_task_bottom_sheet.dart';
 import 'package:todoey_flutter/widgets/task_list.dart';
 
 class Homepage extends StatelessWidget {
@@ -14,12 +15,13 @@ class Homepage extends StatelessWidget {
       ),
     );
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 30, left: 18, bottom: 60),
+              margin: EdgeInsets.only(top: 30, left: 45, bottom: 60),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -56,9 +58,21 @@ class Homepage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-
-      }, child: Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => showModalBottomSheet(
+          builder: (_) => AddTaskBottomSheet(),
+          // isScrollControlled: true,
+          context: context,
+          clipBehavior: Clip.hardEdge,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(60),
+              topRight: Radius.circular(60),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
